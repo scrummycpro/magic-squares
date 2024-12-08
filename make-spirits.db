@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Define the SQLite database and table
+DB_NAME="spirits.db"
+TABLE_NAME="spirits"
+
+# Create the database and table
+sqlite3 $DB_NAME <<EOF
+CREATE TABLE IF NOT EXISTS $TABLE_NAME (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- Correctly define the primary key
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,  -- 'angel' or 'demon'
+    association TEXT NOT NULL,  -- Association or role
+    description TEXT NOT NULL,  -- Additional details
+    reference TEXT,  -- References or sources of the information
+    kabbalistic_association TEXT  -- 'yes' if related to Kabbalah, otherwise 'no'
+);
+EOF
+
+# Insert angels and demons into the table
+sqlite3 $DB_NAME <<EOF
+INSERT INTO $TABLE_NAME (name, type, association, description, reference, kabbalistic_association) VALUES
+    ("Cassiel", "angel", "Saturn", "Represents discipline, structure, and boundaries.", "Agrippa, Occult Philosophy", "no"),
+    ("Sachiel", "angel", "Jupiter", "Governs abundance, justice, and benevolence.", "Agrippa, Occult Philosophy", "no"),
+    ("Samael", "angel", "Mars", "Protector in conflict and symbol of courage and action.", "Kabbalistic sources, Zohar", "yes"),
+    ("Michael", "angel", "Sun", "Brings illumination, protection, and guidance.", "Agrippa, Occult Philosophy", "no"),
+    ("Anael", "angel", "Venus", "Governs love, beauty, and harmony.", "Agrippa, Occult Philosophy", "no"),
+    ("Raphael", "angel", "Mercury", "Associated with communication, travel, and healing.", "Agrippa, Occult Philosophy", "no"),
+    ("Gabriel", "angel", "Moon", "Brings intuition, dreams, and emotional insight.", "Agrippa, Occult Philosophy", "no"),
+    ("Metatron", "angel", "Kether", "Divine will and unity on the Tree of Life.", "Kabbalistic sources, Zohar", "yes"),
+    ("Ratziel", "angel", "Chokmah", "Embodies wisdom and inspiration.", "Kabbalistic sources, Zohar", "yes"),
+    ("Tzaphkiel", "angel", "Binah", "Symbolizes understanding and insight.", "Kabbalistic sources, Zohar", "yes"),
+    ("Tzadkiel", "angel", "Chesed", "Represents mercy and grace.", "Kabbalistic sources, Zohar", "yes"),
+    ("Kamael", "angel", "Gevurah", "Governs strength and discipline.", "Kabbalistic sources, Zohar", "yes"),
+    ("Haniel", "angel", "Netzach", "Embodies eternity and victory.", "Kabbalistic sources, Zohar", "yes"),
+    ("Sandalphon", "angel", "Malkuth", "The kingdom and grounding.", "Kabbalistic sources, Zohar", "yes"),
+    ("Lilith", "demon", "Moon", "Demoness associated with night, sexuality, and danger to infants.", "Talmud, Alphabet of Ben Sira", "yes"),
+    ("Azazel", "demon", "Scapegoat", "Fallen angel, linked to sin and impurity.", "Book of Enoch, Talmud", "yes"),
+    ("Belial", "demon", "Saturn", "Represents lawlessness and corruption.", "Jewish Mysticism", "no"),
+    ("Agrat bat Mahlat", "demon", "Venus", "Queen of demons, leads hosts of spirits.", "Zohar", "yes"),
+    ("Mastema", "demon", "Adversary", "Tests humanity and represents satanic forces.", "Book of Jubilees", "no"),
+    ("Baal", "demon", "Aries", "Represents aggression and recklessness.", "Jewish Mysticism", "no"),
+    ("Astaroth", "demon", "Taurus", "Governs greed and material obsession.", "Jewish Mysticism", "no"),
+    ("Paimon", "demon", "Gemini", "Associated with manipulation and duality.", "Jewish Mysticism", "no"),
+    ("Murmur", "demon", "Cancer", "Linked to moodiness and the past.", "Jewish Mysticism", "no"),
+    ("Balam", "demon", "Leo", "Represents arrogance and domination.", "Jewish Mysticism", "no"),
+    ("Vapula", "demon", "Virgo", "Governs perfectionism turned to criticism.", "Jewish Mysticism", "no"),
+    ("Belphegor", "demon", "Libra", "Linked to laziness and avoidance of responsibility.", "Jewish Mysticism", "no"),
+    ("Zagan", "demon", "Scorpio", "Represents envy and secretive malice.", "Jewish Mysticism", "no"),
+    ("Purson", "demon", "Sagittarius", "Governs overindulgence and risk-taking.", "Jewish Mysticism", "no"),
+    ("Adramelech", "demon", "Capricorn", "Associated with ambition and ruthlessness.", "Jewish Mysticism", "no"),
+    ("Focalor", "demon", "Aquarius", "Represents rebellion and destructive tendencies.", "Jewish Mysticism", "no"),
+    ("Vepar", "demon", "Pisces", "Governs delusion and emotional manipulation.", "Jewish Mysticism", "no");
+EOF
+
+# Notify user
+echo "All angels and demons with their associations have been added to the database $DB_NAME and table $TABLE_NAME."
