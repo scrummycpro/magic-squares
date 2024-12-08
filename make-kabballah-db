@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# Connect to the SQLite database and create the new table
+sqlite3 spirits.db <<EOF
+-- Create the table for spirits of Kabbalah and Qliphoth
+CREATE TABLE IF NOT EXISTS spirits_kabbalah_qliphoth (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    association TEXT NOT NULL,
+    details TEXT,
+    reference TEXT
+);
+
+-- Insert data about the Sephiroth (Kabbalah)
+INSERT INTO spirits_kabbalah_qliphoth (name, association, details, reference) VALUES
+    ('Kether', 
+     'Crown (Divine Will and Unity)', 
+     'Represents the divine source of all creation, the ultimate unity and will of God.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Chokhmah', 
+     'Wisdom', 
+     'Symbolizes the primordial force of creative energy, representing divine wisdom and the spark of creation.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Binah', 
+     'Understanding', 
+     'Represents the process of forming structure and discernment, balancing Chokhmah.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Chesed', 
+     'Mercy (Loving-Kindness)', 
+     'Represents compassion and the outpouring of divine grace.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Gevurah', 
+     'Severity (Judgment)', 
+     'Represents strength, discipline, and the power of limitation.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Tiferet', 
+     'Beauty (Harmony)', 
+     'Symbolizes balance, the heart of the Tree, integrating love and power.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Netzach', 
+     'Eternity (Victory)', 
+     'Represents persistence, endurance, and the power of love.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Hod', 
+     'Glory', 
+     'Symbolizes intellect, logic, and analysis.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Yesod', 
+     'Foundation', 
+     'Represents the bridge between the spiritual and physical realms.', 
+     'Kabbalistic Tree of Life, Sephiroth'),
+    ('Malkuth', 
+     'Kingdom', 
+     'Symbolizes the physical world, the culmination of divine emanations.', 
+     'Kabbalistic Tree of Life, Sephiroth');
+
+-- Insert data about the Qliphoth
+INSERT INTO spirits_kabbalah_qliphoth (name, association, details, reference) VALUES
+    ('Thaumiel', 
+     'Counterpoint to Kether (Crown)', 
+     'Represents duality and conflict; ruled by Satan and Moloch.', 
+     'Qliphothic Tree of Death'),
+    ('Ghagiel', 
+     'Counterpoint to Chokhmah (Wisdom)', 
+     'Symbolizes deceit and opposition; associated with Beelzebub.', 
+     'Qliphothic Tree of Death'),
+    ('Sathariel', 
+     'Counterpoint to Binah (Understanding)', 
+     'Represents concealment and illusions; ruled by Lucifuge.', 
+     'Qliphothic Tree of Death'),
+    ('Gamaliel', 
+     'Counterpoint to Yesod (Foundation)', 
+     'Symbolizes debauchery and corruption; associated with Lilith.', 
+     'Qliphothic Tree of Death'),
+    ('Samael', 
+     'Counterpoint to Tiferet (Beauty)', 
+     'Represents destruction and poison; ruled by Samael (the accuser).', 
+     'Qliphothic Tree of Death'),
+    ('Harab Serapel', 
+     'Counterpoint to Netzach (Eternity)', 
+     'Symbolizes chaos and disharmony; ruled by Baal.', 
+     'Qliphothic Tree of Death'),
+    ('Thagirion', 
+     'Counterpoint to Tiferet (Beauty)', 
+     'Represents imbalance and spiritual blindness.', 
+     'Qliphothic Tree of Death'),
+    ('Golachab', 
+     'Counterpoint to Gevurah (Severity)', 
+     'Represents cruelty and destruction; ruled by Asmodeus.', 
+     'Qliphothic Tree of Death'),
+    ('A’arab Zaraq', 
+     'Counterpoint to Hod (Glory)', 
+     'Symbolizes delusion and falsehoods; associated with Astaroth.', 
+     'Qliphothic Tree of Death'),
+    ('Nehemoth', 
+     'Counterpoint to Malkuth (Kingdom)', 
+     'Represents nightmares and base instincts; ruled by Naamah.', 
+     'Qliphothic Tree of Death');
+
+EOF
+
+echo "Data about spirits of Kabbalah and Qliphoth added to spirits.db successfully!"

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Connect to the SQLite database and create the new table
+sqlite3 spirits.db <<EOF
+-- Create the table for spirits from the Testament of Solomon
+CREATE TABLE IF NOT EXISTS spirits_testament_solomon (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    power_or_influence TEXT,
+    details TEXT,
+    reference TEXT
+);
+
+-- Insert data about spirits from the Testament of Solomon
+INSERT INTO spirits_testament_solomon (name, description, power_or_influence, details, reference) VALUES
+    ('Ornias', 
+     'A demon who tormented a young man by sucking his vitality through his thumb.', 
+     'Causes sickness, lust, and deception.', 
+     'Ornias was subdued by Solomon with the help of a magical ring.', 
+     'Testament of Solomon 2:1-3'),
+    ('Beelzebul', 
+     'Prince of demons and ruler of the underworld.', 
+     'Causes destruction, lies, and rebellion against God.', 
+     'Beelzebul admits to causing chaos in the world and fears Solomon’s authority.', 
+     'Testament of Solomon 3:6-7'),
+    ('Asmodeus', 
+     'A demon associated with lust and destruction of marriages.', 
+     'Causes lust and breaks marital harmony.', 
+     'Asmodeus was bound by Solomon and forced to help in constructing the Temple.', 
+     'Testament of Solomon 5:1-3'),
+    ('Abezithibod', 
+     'A demon who claimed to have hardened Pharaoh’s heart.', 
+     'Influences rebellion and the refusal to follow divine will.', 
+     'Abezithibod describes his role in ancient Egypt and fears the power of Solomon.', 
+     'Testament of Solomon 8:1-2'),
+    ('Lix Tetrax', 
+     'A demon of wind who causes destructive storms.', 
+     'Controls weather and causes destruction through natural disasters.', 
+     'Lix Tetrax was subdued and compelled to assist Solomon in temple building.', 
+     'Testament of Solomon 10:1-3'),
+    ('Oriton', 
+     'A demon who revealed hidden knowledge about astrology and celestial navigation.', 
+     'Influences the study of the stars and knowledge of hidden things.', 
+     'Oriton served Solomon after being bound and described the workings of the heavens.', 
+     'Testament of Solomon 12:5-6'),
+    ('Ephippas', 
+     'A spirit of the Red Sea who brought Solomon a great pillar from Egypt.', 
+     'Controls powerful winds and carries heavy objects.', 
+     'Ephippas was commanded to serve Solomon by transporting the Temple pillars.', 
+     'Testament of Solomon 15:1-3'),
+    ('Abizithibod', 
+     'A demon who opposed Moses and was trapped in the Red Sea.', 
+     'Causes rebellion and obstruction of divine plans.', 
+     'Abizithibod feared the seal of Solomon and obeyed his commands.', 
+     'Testament of Solomon 18:1-2'),
+    ('Envy', 
+     'A demon who confesses to instigating jealousy and strife among people.', 
+     'Causes envy, greed, and discord.', 
+     'Envy reveals its nature and power but is subdued by Solomon’s ring.', 
+     'Testament of Solomon 23:3-5'),
+    ('Moloch', 
+     'A demon associated with child sacrifice and fire.', 
+     'Influences human sacrifice and destructive tendencies.', 
+     'Moloch was forced to confess his evil deeds to Solomon.', 
+     'Testament of Solomon 27:1-3'),
+    ('Ruax', 
+     'A demon of earthquakes.', 
+     'Causes earthquakes and destruction through shaking.', 
+     'Ruax admitted his powers to Solomon and was bound to serve.', 
+     'Testament of Solomon 29:1-2');
+
+EOF
+
+echo "Data about spirits from the Testament of Solomon added to spirits.db successfully!"

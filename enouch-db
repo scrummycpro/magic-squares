@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Connect to the SQLite database and create/update the table
+sqlite3 spirits.db <<EOF
+-- Drop the table if it already exists (optional, only for testing)
+-- DROP TABLE IF EXISTS angels_enoch;
+
+-- Create the updated table with additional columns
+CREATE TABLE IF NOT EXISTS angels_enoch (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    angel_name TEXT NOT NULL,
+    teaching TEXT NOT NULL,
+    details TEXT,
+    reference TEXT
+);
+
+-- Insert or update data about angels and their teachings
+INSERT INTO angels_enoch (angel_name, teaching, details, reference) VALUES
+    ('Azazel', 
+     'Taught humans to make swords, knives, shields, breastplates, and the art of war; also taught beautification like bracelets, ornaments, and cosmetics.', 
+     'Azazel’s teachings led to violence, vanity, and the corruption of human morals.', 
+     'Book of Enoch 8:1-3'),
+    ('Semyaza', 
+     'Led the Watchers in descending to Earth and taught enchantments and root-cuttings.', 
+     'Semyaza was the leader of the fallen angels and played a central role in their rebellion.', 
+     'Book of Enoch 6:3-5, 7:1'),
+    ('Araqiel', 
+     'Taught signs of the earth.', 
+     'Explained geomancy and the study of earth’s features and energies.', 
+     'Book of Enoch 8:3'),
+    ('Kokabiel', 
+     'Taught astrology.', 
+     'Shared knowledge of the stars, influencing ancient astronomy and divination.', 
+     'Book of Enoch 8:3'),
+    ('Ezeqeel', 
+     'Taught the knowledge of clouds.', 
+     'Revealed the workings of meteorology and weather patterns.', 
+     'Book of Enoch 8:3'),
+    ('Chazaqiel', 
+     'Taught signs of the clouds.', 
+     'Provided insight into weather prediction and the spiritual meanings of clouds.', 
+     'Book of Enoch 8:3'),
+    ('Shamsiel', 
+     'Taught the signs of the sun.', 
+     'Shared knowledge about solar cycles and their significance.', 
+     'Book of Enoch 8:3'),
+    ('Sariel', 
+     'Taught the course of the moon.', 
+     'Revealed lunar calendars and their role in timekeeping and rituals.', 
+     'Book of Enoch 8:3'),
+    ('Penemue', 
+     'Taught the art of writing and the use of ink and paper, and revealed secrets of wisdom and deceit.', 
+     'Penemue’s teachings influenced human literacy but also introduced deceptive practices.', 
+     'Book of Enoch 69:8-11'),
+    ('Kasdeja', 
+     'Taught humans the art of abortion and other forbidden knowledge.', 
+     'Kasdeja’s teachings were condemned for promoting life-ending practices.', 
+     'Book of Enoch 69:12'),
+    ('Gadreel', 
+     'Taught how to use weapons for warfare and the killing blow.', 
+     'Gadreel was also said to have deceived Eve and introduced humans to violent tools.', 
+     'Book of Enoch 69:6-7');
+EOF
+
+echo "Data about angels from the Book of Enoch updated in spirits.db with additional details and references!"
